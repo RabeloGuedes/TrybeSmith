@@ -19,4 +19,13 @@ export default class UserController {
     const token = await this.service.registerUser(body);
     res.status(StatusCode.created).json({ token });
   }
+
+  async login(
+    req: Request<unknown, unknown, UserInterface>,
+    res: Response<TokenInterface>,
+  ): Promise<void> {
+    const { body } = req;
+    const token = await this.service.login(body);
+    res.status(StatusCode.ok).json({ token });
+  }
 }
