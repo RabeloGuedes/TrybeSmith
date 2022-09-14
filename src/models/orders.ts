@@ -11,9 +11,12 @@ export default class OrdersModel {
 
   async getAllOrders(): Promise<OrdersInterface[]> {
     const [orders] = await this.connection.execute<RowDataPacket[]>(`
-    SELECT o.id, o.userId, p.products FROM Trybesmith.Orders AS o
+    SELECT o.id, o.userId, JSON_ARRAYAGG(p.id) AS productsIds
+    FROM Trybesmith.Orders AS o
     INNER JOIN Trybesmith.Products AS p
-    ON o.id = p.orderId`);
+    ON o.id = p.orderId
+    GROUP BY o.id
+    ORDER BY userId ASC`);
     return orders as OrdersInterface[];
   }
 }
