@@ -15,4 +15,10 @@ export default class UserService {
     const token = jwt.sign({ id }, tokenInfos.secret);
     return token;
   }
+
+  async login(userData: UserInterface): Promise<string> {
+    const { id } = await this.model.login(userData);
+    const token = jwt.sign({ id }, tokenInfos.secret);
+    return token;
+  }
 }
