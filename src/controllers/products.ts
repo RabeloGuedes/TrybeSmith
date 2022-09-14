@@ -4,19 +4,24 @@ import { ProductBodyInterface, ProductInterface } from '../interfaces/products';
 import StatusCode from '../statusCode/statusCode';
 
 export default class ProductController {
-  constructor(public name: string, public amount: string) {
-    this.name = name;
-    this.amount = amount;
-  }
+  service: ProductService;
 
-  service = new ProductService(this.name, this.amount);
+  constructor() {
+    this.service = new ProductService();
+  }
 
   async registerProduct(
     req: Request<unknown, unknown, ProductBodyInterface>,
     res: Response<ProductInterface>,
-  ) {
+  ): Promise<void> {
     const { body } = req;
     const newProduct = await this.service.registerProduct(body);
     res.status(StatusCode.created).json(newProduct);
   }
+
+  // async getAllProducts(_req: Request, res: Response<ProductInterface[]>) {
+  //   console.log(this.name);
+  //   const products = await this.service.getAllProducts();
+  //   res.status(StatusCode.ok).json(products);
+  // }
 }
