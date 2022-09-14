@@ -1,4 +1,4 @@
-import { ResultSetHeader, Pool } from 'mysql2/promise';
+import { ResultSetHeader, Pool, RowDataPacket } from 'mysql2/promise';
 import connection from './connection';
 import { ProductBodyInterface, ProductInterface } from '../interfaces/products';
 
@@ -20,11 +20,10 @@ export default class ProductModel {
     });
   }
 
-  // async getAllProducts(): Promise<ProductInterface[]> {
-  //   console.log(this.name);
-  //   const [products] = await connection.execute(
-  //     'SELECT id, name, amount, orderId FROM Trybesmith.Products',
-  //   );
-  //   return products as ProductInterface[];
-  // }
+  async getAllProducts(): Promise<ProductInterface[]> {
+    const [products] = await this.connection.execute<RowDataPacket[]>(
+      'SELECT id, name, amount, orderId FROM Trybesmith.Products',
+    );
+    return products as ProductInterface[];
+  }
 }
