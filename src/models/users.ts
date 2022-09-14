@@ -11,7 +11,7 @@ export default class UserModel {
 
   async registerUser(user: UserInterface): Promise<number> {
     const [{ insertId }] = await this.connection.execute<ResultSetHeader>(`
-    INSERT INTO Trybesmith.User (username, classe, level, password)
+    INSERT INTO Trybesmith.Users (username, classe, level, password)
     VALUES (?, ?, ?, ?)`, [user.username, user.classe, user.level, user.password]);
     return insertId;
   }
