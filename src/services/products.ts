@@ -13,9 +13,8 @@ export default class ProductService {
     return newProduct;
   }
 
-  // async getAllProducts(): Promise<ProductInterface[]> {
-  //   // console.log(this.name);
-  //   const products = await this.model.getAllProducts();
-  //   return products as ProductInterface[];
-  // }
+  async getAllProducts(): Promise<ProductInterface[]> {
+    const products = await this.model.getAllProducts();
+    return products as ProductInterface[];
+  }
 }
