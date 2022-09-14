@@ -18,4 +18,12 @@ export default class ProductModel {
       amount: this.amount,
     });
   }
+
+  async getAllProducts() {
+    console.log(this.name);
+    const [products] = await connection.execute(
+      'SELECT id, name, amount, orderId FROM Trybesmith.Products',
+    );
+    return products;
+  }
 }
