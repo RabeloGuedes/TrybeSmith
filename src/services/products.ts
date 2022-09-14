@@ -1,22 +1,21 @@
-import { ProductBodyInterface } from '../interfaces/products';
+import { ProductBodyInterface, ProductInterface } from '../interfaces/products';
 import ProductModel from '../models/products';
 
 export default class ProductService {
-  constructor(public name: string, public amount: string) {
-    this.name = name;
-    this.amount = amount;
+  model: ProductModel;
+
+  constructor() {
+    this.model = new ProductModel();
   }
 
-  model = new ProductModel(this.name, this.amount);
-
-  async registerProduct(product: ProductBodyInterface) {
+  async registerProduct(product: ProductBodyInterface): Promise<ProductInterface> {
     const newProduct = await this.model.registerProduct(product);
     return newProduct;
   }
 
-  async getAllProducts() {
-    console.log(this.name);
-    const products = await this.model.getAllProducts();
-    return products;
-  }
+  // async getAllProducts(): Promise<ProductInterface[]> {
+  //   // console.log(this.name);
+  //   const products = await this.model.getAllProducts();
+  //   return products as ProductInterface[];
+  // }
 }
