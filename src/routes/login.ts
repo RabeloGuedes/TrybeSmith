@@ -1,8 +1,8 @@
 import express from 'express';
 import UserController from '../controllers/users';
 import {
-  isThereAUsername,
-  isThereAPassword,
+  isThereUsername,
+  isTherePassword,
   areTheCredentialsValid,
 } from '../middlewares/login';
 
@@ -12,8 +12,8 @@ const userController = new UserController();
 
 loginRouter.post(
   '/',
-  isThereAUsername,
-  isThereAPassword,
+  isThereUsername,
+  isTherePassword,
   areTheCredentialsValid,
   (req, res) => userController.login(req, res),
 );

@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import UserInterface from '../interfaces/users';
+import { UserInterface } from '../interfaces/users';
 import StatusCode from '../statusCode/statusCode';
 import UserModel from '../models/users';
 
 const userModel = new UserModel();
 
-export function isThereAUsername(
+export function isThereUsername(
   req: Request<unknown, unknown, UserInterface>,
   res: Response<object>,
   next: NextFunction,
@@ -16,7 +16,7 @@ export function isThereAUsername(
   } next();
 }
 
-export function isThereAPassword(
+export function isTherePassword(
   req: Request<unknown, unknown, UserInterface>,
   res: Response<object>,
   next: NextFunction,
