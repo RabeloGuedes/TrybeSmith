@@ -5,6 +5,7 @@ enum StatusCode {
   badRequest = 400,
   unauthorized = 401,
   notFound = 404,
+  unprocessabelEntity = 422,
   internalServerError = 500,
 }
 
