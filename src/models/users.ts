@@ -1,6 +1,6 @@
 import { Pool, ResultSetHeader } from 'mysql2/promise';
 import LoginResponseInterface from '../interfaces/login';
-import UserInterface from '../interfaces/users';
+import { UserInterface } from '../interfaces/users';
 import connection from './connection';
 
 export default class UserModel {

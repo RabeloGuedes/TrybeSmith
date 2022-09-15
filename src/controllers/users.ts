@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import TokenInterface from '../interfaces/token';
-import UserInterface from '../interfaces/users';
+import { UserInterface } from '../interfaces/users';
 import UserService from '../services/users';
 import StatusCode from '../statusCode/statusCode';
 

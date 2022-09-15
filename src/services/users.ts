@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import UserInterface from '../interfaces/users';
+import { UserInterface } from '../interfaces/users';
 import UserModel from '../models/users';
 import tokenInfos from '../util';
 
