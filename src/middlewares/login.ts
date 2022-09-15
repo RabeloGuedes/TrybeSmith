@@ -5,14 +5,22 @@ import UserModel from '../models/users';
 
 const userModel = new UserModel();
 
-export function isThereAUsername(req: Request<UserInterface>, res: Response, next: NextFunction) {
+export function isThereAUsername(
+  req: Request<unknown, unknown, UserInterface>,
+  res: Response<object>,
+  next: NextFunction,
+) {
   const { body } = req;
   if (!body.username) {
     return res.status(StatusCode.badRequest).json({ message: '"username" is required' });
   } next();
 }
 
-export function isThereAPassword(req: Request<UserInterface>, res: Response, next: NextFunction) {
+export function isThereAPassword(
+  req: Request<unknown, unknown, UserInterface>,
+  res: Response<object>,
+  next: NextFunction,
+) {
   const { body } = req;
   if (!body.password) {
     return res.status(StatusCode.badRequest).json({ message: '"password" is required' });
@@ -20,8 +28,8 @@ export function isThereAPassword(req: Request<UserInterface>, res: Response, nex
 }
 
 export async function areTheCredentialsValid(
-  req: Request<UserInterface>,
-  res: Response,
+  req: Request<unknown, unknown, UserInterface>,
+  res: Response<object>,
   next: NextFunction,
 ) {
   const { body } = req;
